@@ -122,10 +122,10 @@ int main(int argc , char *argv []){
 	for (int i=0; i < argc; i++) {
 		mystr=argv[i];
 		if (mystr == "--ncol") {
-			col = atoi(argv[i+1]);
+			ncol = atoi(argv[i+1]);
 		}
 		if (mystr == "--nfil") {
-			fil = atoi(argv[i+1]);
+			nfil = atoi(argv[i+1]);
 		}
 		if (mystr == "--nt") {
 			nt = atoi(argv[i+1]);
@@ -142,10 +142,10 @@ int main(int argc , char *argv []){
 	}
 
 
-    char** matriz = new char*[fil];
-    for (int i=0 ; i<fil ; i++){
-    	matriz[i] = new char[col];
-        for (int j=0 ; j<col ; j++){
+    char** matriz = new char*[nfil];
+    for (int i=0 ; i<nfil ; i++){
+    	matriz[i] = new char[ncol];
+        for (int j=0 ; j<ncol ; j++){
             if(prob>=generar_numero()){
                 matriz[i][j]='*';
             }else{
@@ -154,16 +154,16 @@ int main(int argc , char *argv []){
         }
     }
     if(show){
-		mostrar(matriz,fil,col);
+		mostrar(matriz,nfil,ncol);
 	}
 	//Timer t1;
 	double time=0;
     for (int i=0 ; i<iter ; i++){
 		//t1.start();
     	if(seq){
-    		matriz=stepS(matriz,fil,col);
+    		matriz=stepS(matriz,nfil,ncol);
     	}else{
-    		matriz=stepP(matriz,fil,col,nt);
+    		matriz=stepP(matriz,nfil,ncol,nt);
     	}
     	//t1.stop();
     	//time=time+t1.elapsed<std::chrono::milliseconds>();
