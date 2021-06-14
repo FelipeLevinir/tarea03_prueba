@@ -168,7 +168,7 @@ int main(int argc , char *argv []){
     	//t1.stop();
     	//time=time+t1.elapsed<std::chrono::milliseconds>();
 		if(show){
-			mostrar(matriz,fil,col);
+			mostrar(matriz,nfil,ncol);
 		}
     	
     }
