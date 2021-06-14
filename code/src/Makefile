@@ -1,44 +1,38 @@
-TARGET=./tarea02
+CC=gcc
+CXX=g++
+RM=rm -f
 
-DEBUG=-DDEBUG
-DEBUG=
+TARGET=main
 
-CXX = g++
+INCLUDES=-I./include -I.
+LDFLAGS=
+LDLIBS=-lpthread -fopenmp
 
-#
+CXXFLAGS=-std=c++17 -Wall -O2 -fopenmp
+
 DIR_OBJ=objs
-SOURCES=$(wildcard *.cc)
-OBJECTS=$(patsubst %.cc,$(DIR_OBJ)/%.o,$(SOURCES))
 
-INTRINSICS=-msse2 -mavx
+SRCS=$(wildcard *.cc)
 
-INCLUDES =-I. -I./include
-CPPFLAGS =-std=c++17  -Wno-deprecated $(INTRINSICS) 
-LDFLAGS =-L/usr/local/lib 
-LDLIBS = -lm -lpthread 
+OBJS=$(patsubst %.cc,$(DIR_OBJ)/%.o,$(SRCS))
+
 
 all: $(TARGET)
-	@echo Made [ $? ] OK :\)
-	
-$(TARGET): $(OBJECTS) 
-	@echo Linking [$@]
-	@eval $(CXX) $(LDFLAGS) $^ $(LDLIBS)  -o $@ 
-	
+
+$(TARGET): $(OBJS)
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDLIBS) $(LDFLAGS) 
+
 $(DIR_OBJ)/%.o: %.cc
-	@echo Compiling [$@]
 	@mkdir -p $(DIR_OBJ)
-	@eval $(CXX) -c $(INCLUDES) $(CPPFLAGS)  $< -o $@
-	
+	$(CXX) -c -o $@ $< $(CXXFLAGS) $(INCLUDES)
+
 clean:
-	@$(RM) core *~ \#*\# *.bak *.BAK *\%
-	@$(RM) -f .dummy $(OBJECTS)
+	@$(RM) $(OBJS)
+	@$(RM) *~ core
 
-distclean:
+distclean: clean
 	@$(RM) $(TARGET)
-	@$(RM) -rf $(DIR_OBJ)
+	@$(RM) -r $(DIR_OBJ)
 
-
-
-
-
-
+.PHONY: all clean distclean
+	
