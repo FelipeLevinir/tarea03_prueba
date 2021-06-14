@@ -116,7 +116,7 @@ int main(int argc , char *argv []){
     int nt = omp_get_max_threads();
 	bool seq = false;
 	bool show = false;
-	int iter = 10;
+	int iter = 5;
 
 	std::string mystr;
 	for (int i=0; i < argc; i++) {
