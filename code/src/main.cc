@@ -3,10 +3,6 @@
 #include <iostream>
 #include <random>
 #include <iomanip>
-
-#include <iostream>
-#include <random>
-#include <iomanip>
 #include <stdio.h>
 #include <cstdlib>
 
