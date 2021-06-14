@@ -156,24 +156,24 @@ int main(int argc , char *argv []){
     if(show){
 		mostrar(matriz,nfil,ncol);
 	}
-	//Timer t1;
+	Timer t1;
 	double time=0;
     for (int i=0 ; i<iter ; i++){
-		//t1.start();
+		t1.start();
     	if(seq){
     		matriz=stepS(matriz,nfil,ncol);
     	}else{
     		matriz=stepP(matriz,nfil,ncol,nt);
     	}
-    	//t1.stop();
-    	//time=time+t1.elapsed<std::chrono::milliseconds>();
+    	t1.stop();
+    	time=time+t1.elapsed<std::chrono::milliseconds>();
 		if(show){
 			mostrar(matriz,nfil,ncol);
 		}
     	
     }
-    //std::cout << "elapsed:" << time << "ms\n";
-    //std::cout << "elapsed everage per iteration:" << time/iter << "ms\n";
+    std::cout << "elapsed:" << time << "ms\n";
+    std::cout << "elapsed everage per iteration:" << time/iter << "ms\n";
     
 
     return (EXIT_SUCCESS);
