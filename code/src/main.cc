@@ -42,7 +42,7 @@ char** generar_vacia(int fil, int col){
     for (int i=0 ; i<fil ; i++){
     	matriz[i] = new char[col];
         for (int j=0 ; j<col ; j++){
-            matriz[i][j]='#';
+            matriz[i][j]='X';
         }
     }
     return matriz;
@@ -149,7 +149,7 @@ int main(int argc , char *argv []){
             if(prob>=generar_numero()){
                 matriz[i][j]='*';
             }else{
-               	matriz[i][j]='#';
+               	matriz[i][j]='X';
             }
         }
     }
