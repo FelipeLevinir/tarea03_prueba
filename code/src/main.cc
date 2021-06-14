@@ -103,6 +103,10 @@ char** stepS(char **matriz, int fil, int col){
     }
     return vacia;
 }
+void uso(std::string pname){
+	std::cerr << "Uso: " << pname << " --ncol ... --nfil ... --nt ... --plive ... --seq --show" << std::endl;
+	exit(EXIT_FAILURE);
+}
 
 int main(int argc , char *argv []){
     int col=5;
@@ -111,31 +115,27 @@ int main(int argc , char *argv []){
     uint32_t nt=omp_get_max_threads();
 	bool seq=false;
 	bool show=false;
-	int iter=10;
 
 	std::string mystr;
 	for (int i=0; i < argc; i++) {
 		mystr=argv[i];
-		if (mystr == "-ncol") {
+		if (mystr == "--ncol") {
 			col = atoi(argv[i+1]);
 		}
-		if (mystr == "-nfil") {
+		if (mystr == "--nfil") {
 			fil = atoi(argv[i+1]);
 		}
-		if (mystr == "-nt") {
+		if (mystr == "--nt") {
 			nt = atoi(argv[i+1]);
 		}
-		if (mystr == "-plive") {
+		if (mystr == "--plive") {
 			prob = atoi(argv[i+1]);
 		}
-		if (mystr == "-seq") {
+		if (mystr == "--seq") {
 			seq = true;
 		}
-		if (mystr == "-show") {
+		if (mystr == "-*show") {
 			show = true;
-		}
-		if (mystr == "-iter") {
-			iter = atoi(argv[i+1]);
 		}
 	}
 
@@ -154,7 +154,7 @@ int main(int argc , char *argv []){
     if(show){
 		mostrar(matriz,fil,col);
 	}
-	//Timer t1;
+	//Timing t1;
 	double time=0;
     for (int i=0 ; i<iter ; i++){
 		//t1.start();
@@ -176,54 +176,3 @@ int main(int argc , char *argv []){
 
     return (EXIT_SUCCESS);
 }
-
-
-
-/*
-int main(int argc , char *argv []) {
-	std::random_device dev;  
-	
-	//Por omisión, se paraleliza con la capacidad del HW
-	int32_t nt    = omp_get_max_threads();
-	int32_t aSize = 20;
-	std::cout << nt << std::endl;
-	///////////////////////////////////////
-	//  Read command-line parameters
-	std::string mystr;
-	for (size_t i=0; i < argc; i++) {
-		mystr=argv[i];
-		if (mystr == "-nt") {
-			nt = atoi(argv[i+1]);
-		}
-		if (mystr == "-asize") {
-			aSize = atoi(argv[i+1]);
-		}
-	}
-	
-	auto datos = new uint32_t[aSize];
-
-	std::mt19937 gen(dev()); 
-	std::uniform_int_distribution<> unif(0, 10000);
-
-	//LLenar vector con algo...
-	Timer t1;
-	
-	t1.start();
-	#pragma omp parallel for num_threads(nt)
-	for(size_t i = 0; i < aSize; ++i){	
-		datos[i] = unif(gen);
-		
-		int32_t thID = omp_get_thread_num();
-		#pragma omp critical
-		{
-			std::cout << "thID:" << thID << ", dato[" << i << "]="<< datos[i] << std::endl;
-		}
-	}
-	t1.stop();
-	
-	std::cout << "elapsed:" <<  t1.elapsed<std::chrono::milliseconds>() << "ms\n";
-	
-	
-	
-	return(EXIT_SUCCESS);
-}*/
