@@ -115,7 +115,8 @@ int main(int argc , char *argv []){
     uint32_t nt=omp_get_max_threads();
 	bool seq=false;
 	bool show=false;
-
+	int iter=10;
+	
 	std::string mystr;
 	for (int i=0; i < argc; i++) {
 		mystr=argv[i];
@@ -154,7 +155,7 @@ int main(int argc , char *argv []){
     if(show){
 		mostrar(matriz,fil,col);
 	}
-	//Timing t1;
+	//Timer t1;
 	double time=0;
     for (int i=0 ; i<iter ; i++){
 		//t1.start();
