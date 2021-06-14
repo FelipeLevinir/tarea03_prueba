@@ -108,7 +108,7 @@ int main(int argc , char *argv []){
     int col=5;
     int fil=5;
     float prob=0.8;
-    int32_t nt=omp_get_max_threads();
+    //int32_t nt=omp_get_max_threads();
 	bool seq=false;
 	bool show=false;
 	int iter=10;
@@ -154,24 +154,24 @@ int main(int argc , char *argv []){
     if(show){
 		mostrar(matriz,fil,col);
 	}
-	Timer t1;
+	//Timer t1;
 	double time=0;
     for (int i=0 ; i<iter ; i++){
-		t1.start();
+		//t1.start();
     	if(seq){
     		matriz=stepS(matriz,fil,col);
     	}else{
     		matriz=stepP(matriz,fil,col,nt);
     	}
-    	t1.stop();
-    	time=time+t1.elapsed<std::chrono::milliseconds>();
+    	//t1.stop();
+    	//time=time+t1.elapsed<std::chrono::milliseconds>();
 		if(show){
 			mostrar(matriz,fil,col);
 		}
     	
     }
-    std::cout << "elapsed:" << time << "ms\n";
-    std::cout << "elapsed everage per iteration:" << time/iter << "ms\n";
+    //std::cout << "elapsed:" << time << "ms\n";
+    //std::cout << "elapsed everage per iteration:" << time/iter << "ms\n";
     
 
     return (EXIT_SUCCESS);
