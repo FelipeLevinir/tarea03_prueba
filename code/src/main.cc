@@ -1,5 +1,5 @@
 #include <global.hh>
-#include <Timer.hpp>
+#include <Timing.hpp>
 #include <iostream>
 #include <random>
 #include <iomanip>
