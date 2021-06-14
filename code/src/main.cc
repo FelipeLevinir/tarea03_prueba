@@ -63,13 +63,13 @@ char** stepP(char **matriz, int fil, int col, int32_t nt){
     				}
     			}
     		}
-    		if(matriz[i][j]=='#' && cont==3){
+    		if(matriz[i][j]=='X' && cont==3){
 
     			vacia[i][j]='*';
     		}else if(matriz[i][j]=='*' && (cont==2 || cont==3)){
     			vacia[i][j]='*';
     		}else{
-    			vacia[i][j]='#';
+    			vacia[i][j]='X';
     		}
 
     	}
@@ -91,12 +91,12 @@ char** stepS(char **matriz, int fil, int col){
     				}
     			}
     		}
-			if(matriz[i][j]=='#' && cont==3){
+			if(matriz[i][j]=='X' && cont==3){
     			vacia[i][j]='*';
     		}else if(matriz[i][j]=='*' && (cont==2 || cont==3)){
     			vacia[i][j]='*';
     		}else{
-    			vacia[i][j]='#';
+    			vacia[i][j]='X';
     		}
     		
 
@@ -110,13 +110,13 @@ void uso(std::string pname){
 }
 
 int main(int argc , char *argv []){
-    int col=5;
-    int fil=5;
-    float prob=0.8;
-    int nt=omp_get_num_threads();
-	bool seq=false;
-	bool show=false;
-	int iter=10;
+    int ncol = 4;
+    int nfil = 4;
+    float prob = 0.7;
+    int nt = omp_get_max_threads();
+	bool seq = false;
+	bool show = false;
+	int iter = 10;
 
 	std::string mystr;
 	for (int i=0; i < argc; i++) {
@@ -136,7 +136,7 @@ int main(int argc , char *argv []){
 		if (mystr == "--seq") {
 			seq = true;
 		}
-		if (mystr == "-*show") {
+		if (mystr == "--show") {
 			show = true;
 		}
 	}
