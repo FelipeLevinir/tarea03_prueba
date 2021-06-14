@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <stdio.h>
 #include <cstdlib>
+#include <omp.h>
 
 
 
