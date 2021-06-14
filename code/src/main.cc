@@ -108,7 +108,7 @@ int main(int argc , char *argv []){
     int col=5;
     int fil=5;
     float prob=0.8;
-    //int32_t nt=omp_get_max_threads();
+    uint32_t nt=omp_get_max_threads();
 	bool seq=false;
 	bool show=false;
 	int iter=10;
