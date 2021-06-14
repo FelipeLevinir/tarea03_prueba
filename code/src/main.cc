@@ -104,10 +104,10 @@ char** stepS(char **matriz, int fil, int col){
     }
     return vacia;
 }
-void uso(std::string pname){
+/*void uso(std::string pname){
 	std::cerr << "Uso: " << pname << " --ncol ... --nfil ... --nt ... --plive ... --seq --show" << std::endl;
 	exit(EXIT_FAILURE);
-}
+}*/
 
 int main(int argc , char *argv []){
     int ncol = 4;
