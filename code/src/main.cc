@@ -1,10 +1,14 @@
 #include <global.hh>
+#include <Timing.hpp>
+#include <iostream>
+#include <random>
+#include <iomanip>
+
 #include <iostream>
 #include <random>
 #include <iomanip>
 #include <stdio.h>
 #include <cstdlib>
-#include <Timing.hpp>
 
 
 
@@ -116,7 +120,7 @@ int main(int argc , char *argv []){
 	bool seq=false;
 	bool show=false;
 	int iter=10;
-	
+
 	std::string mystr;
 	for (int i=0; i < argc; i++) {
 		mystr=argv[i];
