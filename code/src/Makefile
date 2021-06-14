@@ -2,7 +2,7 @@ CC=gcc
 CXX=g++
 RM=rm -f
 
-TARGET=main
+TARGET=tarea03
 
 INCLUDES=-I./include -I.
 LDFLAGS=
@@ -36,3 +36,4 @@ distclean: clean
 
 .PHONY: all clean distclean
 	
+
