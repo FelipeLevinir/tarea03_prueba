@@ -1,10 +1,10 @@
 #include <global.hh>
+#include <Timer.hpp>
 #include <iostream>
 #include <random>
 #include <iomanip>
 #include <stdio.h>
 #include <cstdlib>
-#include <Timing.hpp>
 
 
 
