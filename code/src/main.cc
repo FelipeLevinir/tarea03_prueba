@@ -1,11 +1,11 @@
 #include <global.hh>
-#include <Timing.hpp>
+#include <Timer.hpp>
 #include <iostream>
 #include <random>
 #include <iomanip>
 #include <stdio.h>
 #include <cstdlib>
-#include <omp.h>
+//#include <omp.h>
 
 
 

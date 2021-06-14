@@ -1,15 +1,24 @@
-#ifndef __GLOBAL__
-#define __GLOBAL__
+#ifndef _GLOB_H_
+#define _GLOB_H_
 
-
+#include <exception>
 #include <iostream>
-#include <iomanip>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <random>
+#include <utility>
+#include <cstdlib>
 #include <ctime>
-#include <chrono>		// Using high-resolution timer
+#include <fstream>
+#include <memory>
+#include <string>
+#include <list>
+#include <random>
+#include <iomanip>
+#include <stdexcept>
+#include <chrono>
+#include <cmath>
+
+#include <thread>
+#include <mutex>
+#include <omp.h>
 
 
 #endif
