@@ -100,10 +100,10 @@ char** stepS(char **matriz, int fil, int col){
     }
     return vacia;
 }
-void uso(std::string pname){
+/*void uso(std::string pname){
 	std::cerr << "Uso: " << pname << " --ncol ... --nfil ... --nt ... --plive ... --seq --show" << std::endl;
 	exit(EXIT_FAILURE);
-}
+}*/
 
 int main(int argc , char *argv []){
     int ncol = 4;
@@ -114,9 +114,9 @@ int main(int argc , char *argv []){
 	bool show = false;
 	int iter = 5;
 	
-	if(argc != 3){
+	/*if(argc != 3){
 		uso(argv[0]);
-	}
+	}*/
 	std::string mystr;
 	for (int i=0; i < argc; i++) {
 		mystr=argv[i];
