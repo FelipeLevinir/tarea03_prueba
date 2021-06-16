@@ -9,30 +9,29 @@
 
 
 
+float generar_num(){
+    return (float)(rand())/RAND_MAX;
+}
 
 bool* get_vecinos(int x, int y, int fil, int col){
-	bool* vecinosB=new bool[8];
-	int vecinos[8][2]={{x-1,y-1},{x,y-1},{x+1,y-1},{x-1,y},{x+1,y},{x-1,y+1},{x,y+1},{x+1,y+1}};
+	bool* vecinosB = new bool[8];
+	int vecinos[8][2] = {{x-1,y-1},{x,y-1},{x+1,y-1},{x-1,y},{x+1,y},{x-1,y+1},{x,y+1},{x+1,y+1}};
 	for (int i=7 ; i>=0 ; i--){
 		if(vecinos[i][0]<0 || vecinos[i][0]>(col-1) || vecinos[i][1]<0 || vecinos[i][1]>(fil-1)){
-			vecinosB[i]=false;
+			vecinosB[i] = false;
 		}else{
-			vecinosB[i]=true;
+			vecinosB[i] = true;
 		}
 	}
 	return vecinosB;
 }
 
-float generar_numero(){
-    return (float)(rand())/RAND_MAX;
-}
-
 void mostrar(char **matriz, int fil, int col){
     for(int i=0;i< fil;i++){
         for(int j=0;j< col;j++){
-            std::cout<<matriz[i][j];
+            std::cout << matriz[i][j];
         }
-        std::cout<<std::endl;
+        std::cout << std::endl;
     }
     std::cout << std::endl;
 }
@@ -42,7 +41,7 @@ char** generar_vacia(int fil, int col){
     for (int i=0 ; i<fil ; i++){
     	matriz[i] = new char[col];
         for (int j=0 ; j<col ; j++){
-            matriz[i][j]='X';
+            matriz[i][j] = 'X';
         }
     }
     return matriz;
@@ -53,13 +52,13 @@ char** stepP(char **matriz, int fil, int col, int32_t nt){
     for (int i=0 ;  i<fil ; i++){
     	#pragma omp parallel for num_threads(nt)
     	for (int j=0 ; j<col ; j++){
-    		int cont=0;
-    		int vecinos[8][2]={{i-1,j-1},{i,j-1},{i+1,j-1},{i-1,j},{i+1,j},{i-1,j+1},{i,j+1},{i+1,j+1}};
-    		bool* vecinosB=get_vecinos(i,j,fil,col);
+    		int cont = 0;
+    		int vecinos[8][2] = {{i-1,j-1},{i,j-1},{i+1,j-1},{i-1,j},{i+1,j},{i-1,j+1},{i,j+1},{i+1,j+1}};
+    		bool* vecinosB = get_vecinos(i,j,fil,col);
     		for (int k=0; k<8 ; k++){
     			if(vecinosB[k]){
     				if(matriz[vecinos[k][0]][vecinos[k][1]]=='*'){
-    					cont=cont+1;
+    					cont += 1;
     				}
     			}
     		}
@@ -71,7 +70,6 @@ char** stepP(char **matriz, int fil, int col, int32_t nt){
     		}else{
     			vacia[i][j]='X';
     		}
-
     	}
     }
     return vacia;
@@ -81,13 +79,13 @@ char** stepS(char **matriz, int fil, int col){
     char** vacia=generar_vacia(fil,col);
     for (int i=0 ;  i<fil ; i++){
     	for (int j=0 ; j<col ; j++){
-    		int cont=0;
-    		int vecinos[8][2]={{i-1,j-1},{i,j-1},{i+1,j-1},{i-1,j},{i+1,j},{i-1,j+1},{i,j+1},{i+1,j+1}};
-    		bool* vecinosB=get_vecinos(i,j,fil,col);
+    		int cont = 0;
+    		int vecinos[8][2] = {{i-1,j-1},{i,j-1},{i+1,j-1},{i-1,j},{i+1,j},{i-1,j+1},{i,j+1},{i+1,j+1}};
+    		bool* vecinosB = get_vecinos(i,j,fil,col);
     		for (int k=0; k<8 ; k++){
     			if(vecinosB[k]){
     				if(matriz[vecinos[k][0]][vecinos[k][1]]=='*'){
-    					cont=cont+1;
+    					cont += 1;
     				}
     			}
     		}
@@ -98,8 +96,6 @@ char** stepS(char **matriz, int fil, int col){
     		}else{
     			vacia[i][j]='X';
     		}
-    		
-
     	}
     }
     return vacia;
@@ -146,7 +142,7 @@ int main(int argc , char *argv []){
     for (int i=0 ; i<nfil ; i++){
     	matriz[i] = new char[ncol];
         for (int j=0 ; j<ncol ; j++){
-            if(prob>=generar_numero()){
+            if(prob>=generar_num()){
                 matriz[i][j]='*';
             }else{
                	matriz[i][j]='X';
@@ -173,7 +169,7 @@ int main(int argc , char *argv []){
     	
     }
     std::cout << "elapsed:" << time << "ms\n";
-    std::cout << "elapsed everage per iteration:" << time/iter << "ms\n";
+    std::cout << "elapsed per iteration:" << time/iter << "ms\n";
     
 
     return (EXIT_SUCCESS);
