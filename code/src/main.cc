@@ -7,12 +7,6 @@
 #include <cstdlib>
 //#include <omp.h>
 
-
-
-float generar_num(){
-    return (float)(rand())/RAND_MAX;
-}
-
 bool* get_vecinos(int x, int y, int fil, int col){
 	bool* vecinosB = new bool[8];
 	int vecinos[8][2] = {{x-1,y-1},{x,y-1},{x+1,y-1},{x-1,y},{x+1,y},{x-1,y+1},{x,y+1},{x+1,y+1}};
@@ -53,7 +47,7 @@ char** stepP(char **matriz, int fil, int col, int32_t nt){
     	#pragma omp parallel for num_threads(nt)
     	for (int j=0 ; j<col ; j++){
     		int cont = 0;
-    		int vecinos[8][2] = {{i-1,j-1},{i,j-1},{i+1,j-1},{i-1,j},{i+1,j},{i-1,j+1},{i,j+1},{i+1,j+1}};
+    		int vecinos[8][3] = {{i-1,j-1},{i,j-1},{i+1,j-1},{i-1,j},{i+1,j},{i-1,j+1},{i,j+1},{i+1,j+1}};
     		bool* vecinosB = get_vecinos(i,j,fil,col);
     		for (int k=0; k<8 ; k++){
     			if(vecinosB[k]){
@@ -100,6 +94,10 @@ char** stepS(char **matriz, int fil, int col){
     }
     return vacia;
 }
+float generar_num(){
+    return (float)(rand())/RAND_MAX;
+}
+
 /*void uso(std::string pname){
 	std::cerr << "Uso: " << pname << " --ncol ... --nfil ... --nt ... --plive ... --seq --show" << std::endl;
 	exit(EXIT_FAILURE);
