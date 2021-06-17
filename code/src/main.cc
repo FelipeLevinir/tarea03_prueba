@@ -114,7 +114,7 @@ int main(int argc , char *argv []){
 	bool show = false;
 	int iter = 5;
 	
-	/*if(argc != 3){
+	/*if(argc != 2){
 		uso(argv[0]);
 	}*/
 	std::string mystr;
