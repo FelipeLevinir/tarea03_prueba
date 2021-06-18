@@ -21,8 +21,6 @@ bool* get_vecinos(int x, int y, int fil, int col){
 }
 
 void mostrar_tablero(char **matriz, int fil, int col){
-    std::cout << " *** Tablero generado *** " << "\n";
-	std::cout << " " << "\n";
 	for(int i=0;i< fil;i++){
         for(int j=0;j< col;j++){
             std::cout << matriz[i][j];
@@ -153,6 +151,8 @@ int main(int argc , char *argv []){
         }
     }
     if(show){
+		std::cout << " *** Tablero generado *** " << "\n";
+		std::cout << " " << "\n";
 		mostrar_tablero(matriz,nfil,ncol);
 	}
 	Timer t1;
