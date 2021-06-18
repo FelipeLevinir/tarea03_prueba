@@ -169,17 +169,16 @@ int main(int argc , char *argv []){
 		}
     	
     }
-    std::cout << "elapsed:" << time << "ms\n";
-    std::cout << "elapsed per iteration:" << time/iter << "ms\n";
-	std::cout << "==============================================" << "\n";
 	if(seq){
 		std::cout << "Tamaño del problema" << nfil << "x" << ncol << "\n";
 	}else{
     	std::cout << "Estadísticas" << "\n";
 		std::cout << "============" << "\n";
 		std::cout << "Thread's:" << nt << "\n";
-		std::cout << "Tamaño del problema" << nfil << "x" << ncol << "\n";
+		std::cout << "Tamaño del problema: " << nfil << "x" << ncol << "\n";
     	}
-
+    std::cout << "elapsed:" << time << "ms\n";
+    std::cout << "elapsed per iteration:" << time/iter << "ms\n";
+	std::cout << "==============================================" << "\n";
     return (EXIT_SUCCESS);
 }
