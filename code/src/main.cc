@@ -110,7 +110,7 @@ int main(int argc , char *argv []){
     int nt = omp_get_max_threads();
 	bool seq = false;
 	bool show = false;
-	int iter = 5;
+	int iter = 2;
 	
 	/*if(argc != 2){
 		uso(argv[0]);
