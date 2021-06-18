@@ -175,7 +175,7 @@ int main(int argc , char *argv []){
     	
     }
 	if(seq){
-		std::cout << "Tamaño del problema" << nfil << "x" << ncol << "\n";
+		std::cout << "Tamaño del problema: " << nfil << "x" << ncol << "\n";
 	}else{
     	std::cout << "Estadísticas" << "\n";
 		std::cout << "============" << "\n";
