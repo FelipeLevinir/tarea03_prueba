@@ -106,7 +106,7 @@ float generar_num(){
 int main(int argc , char *argv []){
     int ncol = 4;
     int nfil = 4;
-    float prob = 0.7;
+    float prob = 0.4;
     int nt = omp_get_max_threads();
 	bool seq = false;
 	bool show = false;
