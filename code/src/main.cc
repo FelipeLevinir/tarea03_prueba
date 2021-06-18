@@ -153,6 +153,9 @@ int main(int argc , char *argv []){
     if(show){
 		std::cout << " *** Tablero generado *** " << "\n";
 		std::cout << " " << "\n";
+		std::cout << " Las X representan celulas muertas " << "\n";
+		std::cout << " Los * representan celulas muertas" << "\n";
+		std::cout << " " << "\n";
 		mostrar_tablero(matriz,nfil,ncol);
 	}
 	Timer t1;
