@@ -20,7 +20,7 @@ bool* get_vecinos(int x, int y, int fil, int col){
 	return vecinosB;
 }
 
-void mostrar(char **matriz, int fil, int col){
+void mostrar_tablero(char **matriz, int fil, int col){
     for(int i=0;i< fil;i++){
         for(int j=0;j< col;j++){
             std::cout << matriz[i][j];
@@ -30,7 +30,7 @@ void mostrar(char **matriz, int fil, int col){
     std::cout << std::endl;
 }
 
-char** generar_vacia(int fil, int col){
+char** generar_matriz_vacia(int fil, int col){
 	char** matriz = new char*[fil];
     for (int i=0 ; i<fil ; i++){
     	matriz[i] = new char[col];
@@ -41,8 +41,8 @@ char** generar_vacia(int fil, int col){
     return matriz;
 }
 
-char** stepP(char **matriz, int fil, int col, int32_t nt){
-    char** vacia=generar_vacia(fil,col);
+char** trabajo_par(char **matriz, int fil, int col, int32_t nt){
+    char** vacia=generar_matriz_vacia(fil,col);
     for (int i=0 ;  i<fil ; i++){
     	#pragma omp parallel for num_threads(nt)
     	for (int j=0 ; j<col ; j++){
@@ -69,8 +69,8 @@ char** stepP(char **matriz, int fil, int col, int32_t nt){
     return vacia;
 }
 
-char** stepS(char **matriz, int fil, int col){
-    char** vacia=generar_vacia(fil,col);
+char** trabajo_seq(char **matriz, int fil, int col){
+    char** vacia=generar_matriz_vacia(fil,col);
     for (int i=0 ;  i<fil ; i++){
     	for (int j=0 ; j<col ; j++){
     		int cont = 0;
@@ -151,21 +151,21 @@ int main(int argc , char *argv []){
         }
     }
     if(show){
-		mostrar(matriz,nfil,ncol);
+		mostrar_tablero(matriz,nfil,ncol);
 	}
 	Timer t1;
 	double time=0;
     for (int i=0 ; i<iter ; i++){
 		t1.start();
     	if(seq){
-    		matriz=stepS(matriz,nfil,ncol);
+    		matriz=trabajo_seq(matriz,nfil,ncol);
     	}else{
-    		matriz=stepP(matriz,nfil,ncol,nt);
+    		matriz=trabajo_par(matriz,nfil,ncol,nt);
     	}
     	t1.stop();
     	time=time+t1.elapsed<std::chrono::milliseconds>();
 		if(show){
-			mostrar(matriz,nfil,ncol);
+			mostrar_tablero(matriz,nfil,ncol);
 		}
     	
     }
