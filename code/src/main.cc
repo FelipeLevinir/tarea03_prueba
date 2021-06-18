@@ -154,7 +154,7 @@ int main(int argc , char *argv []){
 		std::cout << " *** Tablero generado *** " << "\n";
 		std::cout << " " << "\n";
 		std::cout << " Las X representan celulas muertas " << "\n";
-		std::cout << " Los * representan celulas muertas" << "\n";
+		std::cout << " Los * representan celulas vivas" << "\n";
 		std::cout << " " << "\n";
 		mostrar_tablero(matriz,nfil,ncol);
 	}
